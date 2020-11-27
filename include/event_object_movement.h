@@ -49,6 +49,8 @@ enum ReflectionTypes
 #define GROUND_EFFECT_FLAG_HOT_SPRINGS           (1 << 18)
 #define GROUND_EFFECT_FLAG_SEAWEED               (1 << 19)
 
+#define GROUND_EFFECT_SHADOW                     (1 << 20)
+
 struct StepAnimTable
 {
     const union AnimCmd *const *anims;
