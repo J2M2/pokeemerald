@@ -1,0 +1,28 @@
+mapscripts testmap_MapScripts {
+    // MAP_SCRIPT_ON_RESUME: testmap_OnResume
+
+    // MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [VAR_TEMP_0, 0: testmap_Init]
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0 
+		{
+            // lockall
+            delay(30)
+            // applymovement(OBJ_EVENT_ID_PLAYER,testmap_Camara0)
+			callnative(MoveObjectToPos)
+			waitmovement(0)
+			setvar(VAR_TEMP_0, 1)
+			release
+		}
+	]
+}
+
+
+script Glamio_PRE_OnResume {
+    setvar(VAR_TEMP_0, 0)
+    release
+}
+
+movement testmap_Camara0 {
+    walk_up * 4
+}
