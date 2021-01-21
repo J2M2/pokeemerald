@@ -353,3 +353,8 @@ void LookThroughPorthole(void)
     TrySetPortholeWarpDestination();
     DoPortholeWarp();
 }
+
+void RunTestScenario(void)
+{
+
+}
