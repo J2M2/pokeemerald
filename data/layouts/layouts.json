@@ -4414,8 +4414,8 @@
     {
       "id": "LAYOUT_TESTMAP",
       "name": "testmap_Layout",
-      "width": 10,
-      "height": 10,
+      "width": 20,
+      "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/testmap/border.bin",

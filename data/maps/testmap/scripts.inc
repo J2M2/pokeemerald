@@ -8,7 +8,7 @@ testmap_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 testmap_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_0:
 	delay 30
-	callnative MoveObjectToPos
+	moveobjecttopos OBJ_EVENT_ID_PLAYER, 17, 17, 3
 	waitmovement 0
 	setvar VAR_TEMP_0, 1
 	release
