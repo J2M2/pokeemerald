@@ -48,9 +48,6 @@ int searchPath(struct ObjectEvent *objectEvent,s32 x, s32 y, s32 facing){
     Node node;
     u32 MapWidth = GetMapLayout()->width;
 
-    // u16 rangeX = objectEvent->rangeX;
-    // u16 rangeY = objectEvent->rangeY;
-
     int failure;
     int i;
     int childState;
@@ -101,8 +98,10 @@ int searchPath(struct ObjectEvent *objectEvent,s32 x, s32 y, s32 facing){
                             }
                         }
                         
-                        if (!(isInSet(&explored,childState) || isInQueue(&frontier,childState)))
-                            insert(&frontier,child,CalcHeuristic(&child,x,y));
+                        if (!(isInSet(&explored,childState) || isInQueue(&frontier,childState))){
+                            if (frontier.size<MAXNODES)
+                                insert(&frontier,child,CalcHeuristic(&child,x,y));
+                        }
                         else if(isInQueue(&frontier,childState)){
                             isInQueueWithHigherPath(&frontier,child);
                             }
