@@ -6440,6 +6440,7 @@ bool8 MovementAction_RestoreAnimation_Step0(struct ObjectEvent *objectEvent, str
 bool8 MovementAction_SetInvisible_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     objectEvent->invisible = TRUE;
+    objectEvent->hasShadow = FALSE;
     sprite->sActionFuncId = 1;
     return TRUE;
 }
@@ -6447,6 +6448,7 @@ bool8 MovementAction_SetInvisible_Step0(struct ObjectEvent *objectEvent, struct 
 bool8 MovementAction_SetVisible_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     objectEvent->invisible = FALSE;
+    DoShadowFieldEffect(objectEvent);
     sprite->sActionFuncId = 1;
     return TRUE;
 }
@@ -8821,6 +8823,10 @@ static void DoShadowFieldEffect(struct ObjectEvent *objectEvent)
 {
     if (!objectEvent->hasShadow)
     {
+        if (!IsShadowAllowedInId(objectEvent) || !IsShadowAllowedInWeather() || !IsShadowAllowedInMetatile(objectEvent))
+        {
+            return;
+        }
         objectEvent->hasShadow = TRUE;
         StartFieldEffectForObjectEvent(FLDEFF_SHADOW, objectEvent);
     }
